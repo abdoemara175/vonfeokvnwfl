@@ -1,176 +1,78 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اختبار الدرس - Pixel</title>
-    <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الاختبار التفاعلي | Pixel UI/UX Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <a href="../index.html" class="logo">
-            <span>Pixel</span><span>.</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="../index.html">الرئيسية</a></li>
-            <li><a href="../index.html#levels">المسارات</a></li>
-            <li><a href="placement-test.html">تحديد المستوى</a></li>
-            <li><a href="../index.html#features">المميزات</a></li>
-        </ul>
-    </nav>
+  <!-- Header Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon"><i class="fa-solid fa-cubes-stacked"></i></span>
+        <span>PIXEL <span style="color: var(--primary-purple);">PLATFORM</span></span>
+      </a>
 
-    <!-- Quiz Container -->
-    <div class="container">
-        <div class="quiz-container">
-            <h2 id="quiz-title" style="margin-bottom: 1.5rem; text-align: center;">اختبار الدرس</h2>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress"></div>
-            </div>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link" data-i18n="navHome">الرئيسية</a>
+        <a href="levels.html" class="nav-link" data-i18n="navCourses">المناهج والمسارات</a>
+        <a href="lesson-detail.html" class="nav-link" data-i18n="navSliders">شروحات تفاعلية</a>
+        <a href="quiz.html" class="nav-link active" data-i18n="navQuiz">الاختبار التفاعلي</a>
+        <a href="dashboard.html" class="nav-link" data-i18n="navDashboard">لوحة التحكم</a>
+      </nav>
 
-            <div class="question" id="question-container">
-                <h3 id="question-text">جاري تحميل الأسئلة...</h3>
-                <div class="options" id="options-container"></div>
-            </div>
-
-            <div style="text-align: center; margin-top: 2rem;">
-                <button class="btn btn-primary" id="next-btn" onclick="nextQuestion()" style="display: none;">السؤال التالي</button>
-                <button class="btn btn-primary" id="submit-btn" onclick="submitQuiz()" style="display: none;">إنهاء الاختبار</button>
-                <div id="quiz-result-actions" style="display: none; margin-top: 1rem; gap: 1rem; justify-content: center;">
-                    <a id="back-to-lesson" href="#" class="btn btn-secondary">العودة للدرس</a>
-                    <a id="next-lesson-link" href="#" class="btn btn-primary">الدرس التالي</a>
-                </div>
-            </div>
-        </div>
+      <div class="controls-group">
+        <button class="btn btn-outline btn-sm lang-toggle-btn" onclick="window.i18n.toggleLang()">English</button>
+        <button class="btn btn-outline btn-sm" onclick="window.i18n.toggleTheme()"><i class="fa-solid fa-moon"></i></button>
+        <a href="login.html" class="btn btn-primary btn-sm" id="auth-nav-btn" data-i18n="navLogin">تسجيل الدخول</a>
+      </div>
     </div>
+  </header>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p><strong>Pixel Platform</strong> - منصة تعليمية متخصصة في تصميم UI/UX</p>
+  <!-- Quiz Container -->
+  <main class="container" style="padding: 3rem 1.5rem 6rem;">
+    <div class="glass-card" style="max-width: 800px; margin: 0 auto; padding: 2.5rem;">
+      
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <span class="badge badge-purple" style="margin-bottom: 0.75rem;"><i class="fa-solid fa-award"></i> Pixel Camp Round 1</span>
+        <h1 style="font-size: 2rem; margin-bottom: 0.5rem;" data-i18n="quizTitle">اختبار قياس المستوى والتحدي البرمجي</h1>
+        <p style="color: var(--text-muted);" data-i18n="quizSubtitle">اختبار مكثف يتطلب دقة 80% على الأقل لفتح الموضوع التالي والحصول على وسام الإنجاز.</p>
+        <p style="color: var(--primary-glow); font-size: 0.85rem; margin-top: 0.5rem;" data-i18n="passThresholdInfo">نسبة النجاح المطلوبة: 80% | محاولات محدودة لضمان الجدية</p>
+      </div>
+
+      <!-- Quiz Form -->
+      <form id="quiz-form">
+        <div id="quiz-questions-container">
+          <!-- Dynamically Injected Questions -->
         </div>
-    </footer>
 
-    <script src="../js/data.js"></script>
-    <script src="../js/auth.js"></script>
-    <script>
-        // Protect this page
-        auth.protectPage();
+        <div style="margin-top: 2.5rem; text-align: center;">
+          <button type="submit" class="btn btn-primary" style="padding: 0.85rem 2.5rem; font-size: 1rem;">
+            <i class="fa-solid fa-paper-plane"></i> <span data-i18n="submitQuiz">تسليم الإجابات وتقييم النتيجة</span>
+          </button>
+        </div>
+      </form>
 
-        let questions = [];
-        let currentQuestion = 0;
-        let score = 0;
-        let selectedAnswers = [];
-        let levelKey, lessonId;
+      <!-- Results Box -->
+      <div id="quiz-result-box" style="display: none; margin-top: 2rem; padding: 2rem; border-radius: var(--radius-lg); text-align: center;">
+        <i id="result-icon" class="fa-solid" style="font-size: 3.5rem; margin-bottom: 1rem;"></i>
+        <h2 id="result-title" style="margin-bottom: 0.5rem;"></h2>
+        <p id="result-score" style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;"></p>
+        <p id="result-desc" style="color: var(--text-muted); margin-bottom: 1.5rem;"></p>
+        <div id="result-actions"></div>
+      </div>
 
-        function initQuiz() {
-            const params = new URLSearchParams(window.location.search);
-            levelKey = params.get('level') || 'beginner';
-            lessonId = parseInt(params.get('lesson')) || 1;
+    </div>
+  </main>
 
-            const level = pixelData.levels[levelKey];
-            const lessonIndex = level ? level.lessons.findIndex(l => l.id === lessonId) : -1;
-            const lesson = lessonIndex !== -1 ? level.lessons[lessonIndex] : null;
-
-            if (lesson && lesson.quiz) {
-                questions = lesson.quiz;
-                document.getElementById('quiz-title').textContent = `اختبار: ${lesson.title}`;
-                document.getElementById('back-to-lesson').href = `lesson-detail.html?level=${levelKey}&lesson=${lessonId}`;
-                
-                // Setup next lesson link
-                if (lessonIndex < level.lessons.length - 1) {
-                    const nextLesson = level.lessons[lessonIndex + 1];
-                    document.getElementById('next-lesson-link').href = `lesson-detail.html?level=${levelKey}&lesson=${nextLesson.id}`;
-                    document.getElementById('next-lesson-link').style.display = 'inline-block';
-                } else {
-                    document.getElementById('next-lesson-link').style.display = 'none';
-                }
-
-                loadQuestion();
-            } else {
-                document.getElementById('question-text').textContent = "لا يوجد اختبار لهذا الدرس حالياً.";
-            }
-        }
-
-        function loadQuestion() {
-            const question = questions[currentQuestion];
-            document.getElementById("question-text").textContent = question.question;
-            
-            const optionsContainer = document.getElementById("options-container");
-            optionsContainer.innerHTML = "";
-            
-            question.options.forEach((option, index) => {
-                const optionDiv = document.createElement("div");
-                optionDiv.className = "option";
-                if (selectedAnswers[currentQuestion] === index) optionDiv.classList.add("selected");
-                optionDiv.textContent = option;
-                optionDiv.onclick = () => selectOption(index, optionDiv);
-                optionsContainer.appendChild(optionDiv);
-            });
-
-            updateProgress();
-            updateButtons();
-        }
-
-        function selectOption(index, element) {
-            document.querySelectorAll(".option").forEach(opt => opt.classList.remove("selected"));
-            element.classList.add("selected");
-            selectedAnswers[currentQuestion] = index;
-        }
-
-        function updateProgress() {
-            const progress = ((currentQuestion + 1) / questions.length) * 100;
-            document.getElementById("progress").style.width = progress + "%";
-        }
-
-        function updateButtons() {
-            const nextBtn = document.getElementById("next-btn");
-            const submitBtn = document.getElementById("submit-btn");
-            
-            if (currentQuestion < questions.length - 1) {
-                nextBtn.style.display = "inline-block";
-                submitBtn.style.display = "none";
-            } else {
-                nextBtn.style.display = "none";
-                submitBtn.style.display = "inline-block";
-            }
-        }
-
-        function nextQuestion() {
-            if (selectedAnswers[currentQuestion] !== undefined) {
-                currentQuestion++;
-                loadQuestion();
-            } else {
-                alert("يرجى اختيار إجابة");
-            }
-        }
-
-        function submitQuiz() {
-            if (selectedAnswers[currentQuestion] === undefined) {
-                alert("يرجى اختيار إجابة");
-                return;
-            }
-
-            score = 0;
-            questions.forEach((question, index) => {
-                if (selectedAnswers[index] === question.correct) {
-                    score++;
-                }
-            });
-
-            const percentage = (score / questions.length) * 100;
-            let message = `نتيجتك: ${score}/${questions.length} (${percentage}%)\n`;
-            
-            if (percentage >= 80) message += "ممتاز! لقد أتقنت هذا الدرس.";
-            else if (percentage >= 50) message += "جيد، ولكن يمكنك مراجعة الدرس مرة أخرى.";
-            else message += "تحتاج لمراجعة الدرس جيداً قبل الانتقال للدرس التالي.";
-
-            alert(message);
-            document.getElementById('quiz-result-actions').style.display = 'flex';
-            document.getElementById('submit-btn').style.display = 'none';
-        }
-
-        window.onload = initQuiz;
-    </script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/quiz.js"></script>
 </body>
 </html>

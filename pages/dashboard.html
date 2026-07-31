@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم والإدارة | Pixel UI/UX Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <!-- Header Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon"><i class="fa-solid fa-cubes-stacked"></i></span>
+        <span>PIXEL <span style="color: var(--primary-purple);">PLATFORM</span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link" data-i18n="navHome">الرئيسية</a>
+        <a href="levels.html" class="nav-link" data-i18n="navCourses">المناهج والمسارات</a>
+        <a href="lesson-detail.html" class="nav-link" data-i18n="navSliders">شروحات تفاعلية</a>
+        <a href="quiz.html" class="nav-link" data-i18n="navQuiz">الاختبار التفاعلي</a>
+        <a href="dashboard.html" class="nav-link active" data-i18n="navDashboard">لوحة التحكم</a>
+      </nav>
+
+      <div class="controls-group">
+        <button class="btn btn-outline btn-sm lang-toggle-btn" onclick="window.i18n.toggleLang()">English</button>
+        <button class="btn btn-outline btn-sm" onclick="window.i18n.toggleTheme()"><i class="fa-solid fa-moon"></i></button>
+        <button class="btn btn-outline btn-sm" id="logout-btn" onclick="window.pixelAuth.logout()" data-i18n="navLogout">تسجيل الخروج</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Main Content -->
+  <main class="container" style="padding: 3rem 1.5rem 6rem;">
+    
+    <!-- User Profile Banner -->
+    <div class="glass-card" style="margin-bottom: 2rem; padding: 2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem;">
+      <div style="display: flex; align-items: center; gap: 1.25rem;">
+        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-purple), #ec4899); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: white;" id="user-avatar-initial">
+          ع
+        </div>
+        <div>
+          <h2 id="user-display-name" style="font-size: 1.4rem;">عبد الرحمن عمارة</h2>
+          <p id="user-email" style="color: var(--text-muted); font-size: 0.9rem;"></p>
+          <div style="margin-top: 0.5rem;" id="user-role-badge">
+            <span class="badge badge-purple" id="role-text">Founder</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <div style="background: rgba(139, 92, 246, 0.1); border: 1px solid var(--border-color); padding: 0.75rem 1.25rem; border-radius: var(--radius-md); text-align: center;">
+          <span style="display: block; font-size: 0.75rem; color: var(--text-muted);" data-i18n="activeCamp">المعسكر الحالي</span>
+          <strong style="color: var(--primary-glow);" id="user-camp-name">Pixel Camp - Round 1</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student View Grid -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem;" id="student-view-section">
+      
+      <!-- Progress & Badges Card -->
+      <div class="glass-card">
+        <h3 style="margin-bottom: 1.25rem; font-size: 1.15rem;" data-i18n="progressOverall"><i class="fa-solid fa-chart-pie" style="color: var(--primary-glow);"></i> نسبة إنجاز المسار التعليمي</h3>
+        <div style="background: rgba(255, 255, 255, 0.05); height: 16px; border-radius: 50px; overflow: hidden; margin-bottom: 1.5rem;">
+          <div id="progress-bar-fill" style="width: 85%; height: 100%; background: linear-gradient(90deg, var(--primary-purple), #ec4899); border-radius: 50px;"></div>
+        </div>
+
+        <h4 style="margin-bottom: 1rem; font-size: 1rem;">الأوسمة والإنجازات المكتسبة</h4>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;" id="user-badges-list">
+          <span class="badge badge-gold"><i class="fa-solid fa-medal"></i> Master UI/UX</span>
+          <span class="badge badge-purple"><i class="fa-solid fa-shield"></i> Founder</span>
+        </div>
+      </div>
+
+      <!-- Top 3 Leaderboard Card -->
+      <div class="glass-card">
+        <h3 style="margin-bottom: 1.25rem; font-size: 1.15rem;" data-i18n="topLeaderboardTitle"><i class="fa-solid fa-trophy" style="color: #eab308;"></i> أفضل 3 طلاب في الدفعة (Top 3 in Camp)</h3>
+        <div id="top3-leaderboard-container">
+          <!-- Dynamically Injected Top 3 -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Staff & Admin RBAC Control Panel (For Founder, Admins & Instructors) -->
+    <div class="glass-card" id="admin-staff-panel" style="padding: 2rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-light); padding-bottom: 1rem;">
+        <h3><i class="fa-solid fa-user-gear" style="color: var(--primary-glow);"></i> <span data-i18n="adminPanelTitle">لوحة إدارة الرتب وتوزيع الطلاب (Admin & Staff Panel)</span></h3>
+        <span class="badge badge-purple">صلاحيات الإدارة والـ Staff</span>
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; text-align: right;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted);">
+              <th style="padding: 0.75rem;">المستخدم</th>
+              <th style="padding: 0.75rem;">البريد الإلكتروني</th>
+              <th style="padding: 0.75rem;">الرتبة الحالية</th>
+              <th style="padding: 0.75rem;">المعسكر / Round</th>
+              <th style="padding: 0.75rem;">تغيير الرتبة (RBAC)</th>
+            </tr>
+          </thead>
+          <tbody id="all-users-table-body">
+            <!-- Dynamically Injected User Rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>

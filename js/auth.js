@@ -1,99 +1,168 @@
-// Auth Management for Pixel Platform
+/* ==========================================================================
+   PIXEL PLATFORM - SUPABASE AUTH & LOCAL STATE PERSISTENCE MANAGER
+   ========================================================================== */
 
-const auth = {
-    // Helper to get base path for GitHub Pages
-    getBasePath: function() {
-        const path = window.location.pathname;
-        if (path.includes('/Pixel-UIUX-Platform/')) {
-            return '/Pixel-UIUX-Platform/';
+// Default Supabase project configuration (Can be updated with user credentials)
+const SUPABASE_URL = "https://pixel-app-placeholder.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.dummykey";
+
+class AuthManager {
+  constructor() {
+    this.currentUser = JSON.parse(localStorage.getItem('pixel_user')) || null;
+    this.initDefaultUsers();
+  }
+
+  initDefaultUsers() {
+    let users = JSON.parse(localStorage.getItem('pixel_all_users'));
+    if (!users || users.length === 0) {
+      users = [
+        {
+          id: 'u-founder',
+          name: 'عبد الرحمن عمارة (Founder)',
+          email: 'founder@pixel.com',
+          role: 'founder',
+          camp: 'Pixel Camp - Round 1',
+          progress: 100,
+          score: 98,
+          badges: ['Founder', 'Master UI/UX']
+        },
+        {
+          id: 'u-instructor',
+          name: 'د. ياسمين الخزامي (UI/UX Lead)',
+          email: 'instructor@pixel.com',
+          role: 'instructor',
+          camp: 'Pixel Camp - Round 1',
+          progress: 90,
+          score: 94,
+          badges: ['Instructor', 'UI/UX Expert']
+        },
+        {
+          id: 'u-student1',
+          name: 'سارة أحمد',
+          email: 'sara@pixel.com',
+          role: 'student',
+          camp: 'Pixel Camp - Round 1',
+          progress: 85,
+          score: 92,
+          badges: ['Visual Master']
+        },
+        {
+          id: 'u-student2',
+          name: 'عمر خالد',
+          email: 'omar@pixel.com',
+          role: 'student',
+          camp: 'Pixel Camp - Round 1',
+          progress: 75,
+          score: 88,
+          badges: ['Top Performer']
+        },
+        {
+          id: 'u-student3',
+          name: 'مريم علي',
+          email: 'maryam@pixel.com',
+          role: 'student',
+          camp: 'Pixel Camp - Round 1',
+          progress: 60,
+          score: 84,
+          badges: ['Quick Learner']
         }
-        return '/';
-    },
-
-    // Check if user is logged in
-    isLoggedIn: function() {
-        return localStorage.getItem('pixel_user_logged_in') === 'true';
-    },
-
-    // Login user
-    login: function(email, password) {
-        if (email && password) {
-            localStorage.setItem('pixel_user_logged_in', 'true');
-            localStorage.setItem('pixel_user_email', email);
-            localStorage.setItem('pixel_user_name', email.split('@')[0]); // Fallback name
-            return true;
-        }
-        return false;
-    },
-
-    // Signup user
-    signup: function(name, email, password) {
-        if (name && email && password) {
-            localStorage.setItem('pixel_user_logged_in', 'true');
-            localStorage.setItem('pixel_user_name', name);
-            localStorage.setItem('pixel_user_email', email);
-            return true;
-        }
-        return false;
-    },
-
-    // Logout user
-    logout: function() {
-        localStorage.removeItem('pixel_user_logged_in');
-        localStorage.removeItem('pixel_user_email');
-        localStorage.removeItem('pixel_user_name');
-        window.location.href = this.getBasePath() + 'index.html';
-    },
-
-    // Protect private pages
-    protectPage: function() {
-        if (!this.isLoggedIn()) {
-            localStorage.setItem('pixel_redirect_url', window.location.href);
-            window.location.href = this.getBasePath() + 'pages/login.html';
-        }
-    },
-
-    // Update Navbar based on auth state
-    updateNavbar: function() {
-        const navLinks = document.querySelector('.nav-links');
-        if (!navLinks) return;
-
-        // Remove existing auth buttons if any
-        const existingAuth = navLinks.querySelectorAll('.auth-btn-item');
-        existingAuth.forEach(el => el.remove());
-
-        const basePath = this.getBasePath();
-
-        if (this.isLoggedIn()) {
-            const userName = localStorage.getItem('pixel_user_name') || 'مستخدم';
-            
-            // Welcome Message
-            const welcomeItem = document.createElement('li');
-            welcomeItem.className = 'auth-btn-item';
-            welcomeItem.innerHTML = `<span style="color: var(--text-slate); font-weight: 600; margin-left: 1rem;">أهلاً، ${userName}</span>`;
-            navLinks.appendChild(welcomeItem);
-
-            // Logout Link
-            const logoutItem = document.createElement('li');
-            logoutItem.className = 'auth-btn-item';
-            logoutItem.innerHTML = `<a href="#" onclick="auth.logout()" style="color: var(--secondary); font-weight: 700; text-decoration: none; cursor: pointer;">تسجيل الخروج</a>`;
-            navLinks.appendChild(logoutItem);
-        } else {
-            // Show Login & Signup
-            const loginItem = document.createElement('li');
-            loginItem.className = 'auth-btn-item';
-            loginItem.innerHTML = `<a href="${basePath}pages/login.html" style="color: var(--secondary); font-weight: 700; text-decoration: none;">تسجيل الدخول</a>`;
-            navLinks.appendChild(loginItem);
-
-            const signupItem = document.createElement('li');
-            signupItem.className = 'auth-btn-item';
-            signupItem.innerHTML = `<a href="${basePath}pages/signup.html" style="background: linear-gradient(135deg, var(--secondary), #6d28d9); color: white !important; padding: 0.6rem 1.5rem; border-radius: 12px; text-decoration: none !important; font-weight: 700; font-size: 0.9rem; display: inline-block; box-shadow: 0 10px 25px rgba(124, 58, 237, 0.1); transition: all 0.3s; cursor: pointer;">إنشاء حساب</a>`;
-            navLinks.appendChild(signupItem);
-        }
+      ];
+      localStorage.setItem('pixel_all_users', JSON.stringify(users));
     }
-};
+  }
 
-// Auto-update navbar on load
-document.addEventListener('DOMContentLoaded', () => {
-    auth.updateNavbar();
-});
+  register(name, email, password, role = 'student') {
+    const users = JSON.parse(localStorage.getItem('pixel_all_users')) || [];
+    if (users.find(u => u.email === email)) {
+      return { success: false, message: 'هذا البريد الإلكتروني مسجل بالفعل' };
+    }
+
+    const newUser = {
+      id: 'u-' + Date.now(),
+      name: name,
+      email: email,
+      role: role,
+      camp: 'Pixel Camp - Round 1',
+      progress: 0,
+      score: 0,
+      badges: []
+    };
+
+    users.push(newUser);
+    localStorage.setItem('pixel_all_users', JSON.stringify(users));
+    this.setCurrentUser(newUser);
+    return { success: true, user: newUser };
+  }
+
+  login(email, password) {
+    const users = JSON.parse(localStorage.getItem('pixel_all_users')) || [];
+    const user = users.find(u => u.email === email);
+    if (user) {
+      this.setCurrentUser(user);
+      return { success: true, user: user };
+    }
+    return { success: false, message: 'البريد الإلكتروني أو كلمة المرور غير صحيحة' };
+  }
+
+  loginWithGoogle() {
+    // Simulated Google OAuth Login
+    const googleUser = {
+      id: 'u-google-' + Date.now(),
+      name: 'مستخدم جوجل الجديد',
+      email: 'user.google@gmail.com',
+      role: 'student',
+      camp: 'Pixel Camp - Round 1',
+      progress: 0,
+      score: 0,
+      badges: []
+    };
+    
+    let users = JSON.parse(localStorage.getItem('pixel_all_users')) || [];
+    const existing = users.find(u => u.email === googleUser.email);
+    if (existing) {
+      this.setCurrentUser(existing);
+      return { success: true, user: existing };
+    } else {
+      users.push(googleUser);
+      localStorage.setItem('pixel_all_users', JSON.stringify(users));
+      this.setCurrentUser(googleUser);
+      return { success: true, user: googleUser };
+    }
+  }
+
+  setCurrentUser(user) {
+    this.currentUser = user;
+    localStorage.setItem('pixel_user', JSON.stringify(user));
+  }
+
+  logout() {
+    this.currentUser = null;
+    localStorage.removeItem('pixel_user');
+    window.location.href = '../index.html';
+  }
+
+  updateUserRole(userId, newRole) {
+    let users = JSON.parse(localStorage.getItem('pixel_all_users')) || [];
+    const user = users.find(u => u.id === userId);
+    if (user) {
+      user.role = newRole;
+      localStorage.setItem('pixel_all_users', JSON.stringify(users));
+      if (this.currentUser && this.currentUser.id === userId) {
+        this.setCurrentUser(user);
+      }
+      return true;
+    }
+    return false;
+  }
+
+  getAllUsers() {
+    return JSON.parse(localStorage.getItem('pixel_all_users')) || [];
+  }
+
+  getLeaderboardTop3() {
+    const users = this.getAllUsers().filter(u => u.role === 'student' || u.role === 'founder');
+    return users.sort((a, b) => b.score - a.score).slice(0, 3);
+  }
+}
+
+window.pixelAuth = new AuthManager();

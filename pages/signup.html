@@ -1,142 +1,83 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إنشاء حساب جديد - Pixel</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <style>
-        .auth-container {
-            max-width: 450px;
-            margin: 5rem auto;
-            padding: 3rem;
-            background: white;
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border-soft);
-        }
-        .auth-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-        .auth-header h1 {
-            font-size: 2rem;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-        }
-        .auth-header p {
-            color: var(--text-slate);
-        }
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-        .form-group input {
-            width: 100%;
-            padding: 1rem;
-            border-radius: 12px;
-            border: 2px solid var(--border-soft);
-            font-size: 1rem;
-            transition: all 0.3s;
-            outline: none;
-        }
-        .form-group input:focus {
-            border-color: var(--secondary);
-            background: var(--secondary-light);
-        }
-        .auth-btn {
-            width: 100%;
-            margin-top: 1rem;
-            padding: 1.2rem;
-            font-size: 1.1rem;
-            background: linear-gradient(135deg, var(--secondary), #6d28d9) !important;
-            color: white !important;
-            box-shadow: var(--shadow-md) !important;
-            border: none !important;
-        }
-        .auth-btn:hover {
-            transform: translateY(-3px) !important;
-            box-shadow: var(--shadow-lg) !important;
-        }
-        .auth-footer {
-            text-align: center;
-            margin-top: 2rem;
-            color: var(--text-slate);
-        }
-        .auth-footer a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 700;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إنشاء حساب جديد | Pixel UI/UX Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <a href="../index.html" class="logo">
-            <span>Pixel</span><span>.</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="../index.html">الرئيسية</a></li>
-            <li><a href="../index.html#levels">المسارات</a></li>
-            <li><a href="placement-test.html">تحديد المستوى</a></li>
-            <li><a href="../index.html#features">المميزات</a></li>
-        </ul>
-    </nav>
+  <!-- Header Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon"><i class="fa-solid fa-cubes-stacked"></i></span>
+        <span>PIXEL <span style="color: var(--primary-purple);">PLATFORM</span></span>
+      </a>
 
-    <div class="container">
-        <div class="auth-container">
-            <div class="auth-header">
-                <h1>ابدأ رحلتك اليوم</h1>
-                <p>قم بإنشاء حساب مجاني وابدأ في تعلم تصميم UI/UX</p>
-            </div>
-            <form id="signup-form">
-                <div class="form-group">
-                    <label for="name">الاسم بالكامل</label>
-                    <input type="text" id="name" placeholder="أدخل اسمك" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">البريد الإلكتروني</label>
-                    <input type="email" id="email" placeholder="example@mail.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">كلمة المرور</label>
-                    <input type="password" id="password" placeholder="••••••••" required>
-                </div>
-                <button type="submit" class="btn btn-primary auth-btn">إنشاء حساب</button>
-            </form>
-            <div class="auth-footer">
-                <p>لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a></p>
-            </div>
-        </div>
+      <div class="controls-group">
+        <button class="btn btn-outline btn-sm lang-toggle-btn" onclick="window.i18n.toggleLang()">English</button>
+        <button class="btn btn-outline btn-sm" onclick="window.i18n.toggleTheme()"><i class="fa-solid fa-moon"></i></button>
+      </div>
     </div>
+  </header>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p><strong>Pixel Platform</strong> - منصة تعليمية متخصصة في تصميم UI/UX</p>
+  <!-- Signup Form -->
+  <main class="container" style="padding: 4rem 1.5rem; display: flex; justify-content: center;">
+    <div class="glass-card" style="width: 100%; max-width: 440px; padding: 2.5rem;">
+      
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="font-size: 1.6rem; margin-bottom: 0.5rem;" data-i18n="navSignup">إنشاء حساب جديد</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">انضم إلى مسار Pixel Camp للتصميم والتطوير</p>
+      </div>
+
+      <form id="signup-form">
+        <div style="margin-bottom: 1.25rem;">
+          <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.4rem;">الاسم الكامل</label>
+          <input type="text" id="signup-name" required placeholder="محمد أحمد" style="width: 100%; padding: 0.75rem; background: var(--bg-body); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-main);">
         </div>
-    </footer>
 
-    <script src="../js/auth.js"></script>
-    <script>
-        document.getElementById('signup-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            if (auth.signup(name, email, password)) {
-                const redirectUrl = localStorage.getItem('pixel_redirect_url') || '../index.html';
-                localStorage.removeItem('pixel_redirect_url');
-                window.location.href = redirectUrl;
-            }
-        });
-    </script>
+        <div style="margin-bottom: 1.25rem;">
+          <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.4rem;">البريد الإلكتروني</label>
+          <input type="email" id="signup-email" required placeholder="example@pixel.com" style="width: 100%; padding: 0.75rem; background: var(--bg-body); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-main);">
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.4rem;">كلمة المرور</label>
+          <input type="password" id="signup-password" required placeholder="••••••••" style="width: 100%; padding: 0.75rem; background: var(--bg-body); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-main);">
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" data-i18n="navSignup">تسجيل الحساب</button>
+      </form>
+
+      <div style="margin-top: 1.5rem; text-align: center; font-size: 0.875rem;">
+        <span style="color: var(--text-muted);">لديك حساب بالفعل؟</span>
+        <a href="login.html" style="color: var(--primary-glow); font-weight: 600; text-decoration: none;" data-i18n="navLogin">تسجيل الدخول</a>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/auth.js"></script>
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('signup-name').value;
+      const email = document.getElementById('signup-email').value;
+      const pass = document.getElementById('signup-password').value;
+
+      const res = window.pixelAuth.register(name, email, pass, 'student');
+      if (res.success) {
+        window.location.href = 'dashboard.html';
+      } else {
+        alert(res.message);
+      }
+    });
+  </script>
 </body>
 </html>

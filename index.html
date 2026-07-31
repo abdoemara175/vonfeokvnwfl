@@ -1,149 +1,113 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel - منصة تعليمية في تصميم UI/UX</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel UI/UX Educational Platform | المنصة التعليمية والمجتمعية</title>
+  <meta name="description" content="منصة Pixel التعليمية والمجتمعية المتكاملة لتعلم UI/UX من الصفر إلى الاحتراف بمسارات تفاعلية واختبارات قياس مستوى ودعم مجتمعي.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <a href="index.html" class="logo">
-            <span>Pixel</span><span>.</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html">الرئيسية</a></li>
-            <li><a href="#levels">المسارات</a></li>
-            <li><a href="pages/placement-test.html">تحديد المستوى</a></li>
-            <li><a href="#features">المميزات</a></li>
-        </ul>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>تعلم <span>تصميم الواجهات</span> بسهولة</h1>
-        <p>منصة تعليمية متخصصة في تعليم أساسيات وتقنيات تصميم UI/UX للمبتدئين والمحترفين</p>
-        <div class="hero-buttons">
-            <a href="pages/placement-test.html" class="btn btn-primary">ابدأ الآن</a>
-            <a href="#levels" class="btn btn-secondary">استكشف المسارات</a>
-        </div>
-    </section>
+  <!-- Main Navbar Header -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-icon"><i class="fa-solid fa-cubes-stacked"></i></span>
+        <span>PIXEL <span style="color: var(--primary-purple);">PLATFORM</span></span>
+      </a>
 
-    <!-- Learning Objectives Section -->
-    <section class="objectives" id="objectives">
-        <div class="container">
-            <h2>أهداف التعلم</h2>
-            <p class="objectives-subtitle">اكتشف ما ستحققه من خلال رحلتك التعليمية معنا</p>
-            <div class="objectives-grid">
-                <div class="objective-card">
-                    <div class="objective-icon">🧠</div>
-                    <h3>فهم المبادئ الأساسية</h3>
-                    <p>تعلم المفاهيم الأساسية لتصميم الواجهات والتجربة من الصفر</p>
-                </div>
-                <div class="objective-card">
-                    <div class="objective-icon">🛠️</div>
-                    <h3>إتقان الأدوات والتقنيات</h3>
-                    <p>احترف استخدام أدوات التصميم الحديثة والعمليات الاحترافية</p>
-                </div>
-                <div class="objective-card">
-                    <div class="objective-icon">🎨</div>
-                    <h3>تطوير مهارات التصميم</h3>
-                    <p>طور مهاراتك في الألوان والطباعة والتخطيط والتصميم المتجاوب</p>
-                </div>
-                <div class="objective-card">
-                    <div class="objective-icon">👥</div>
-                    <h3>التركيز على تجربة المستخدم</h3>
-                    <p>تعلم كيفية تصميم واجهات تركز على احتياجات المستخدم الفعلية</p>
-                </div>
-                <div class="objective-card">
-                    <div class="objective-icon">📊</div>
-                    <h3>تحليل وتقييم التصاميم</h3>
-                    <p>اكتسب القدرة على تحليل التصاميم وتقييمها بناءً على معايير عالمية</p>
-                </div>
-                <div class="objective-card">
-                    <div class="objective-icon">🚀</div>
-                    <h3>بناء محفظة احترافية</h3>
-                    <p>أنشئ مشاريع حقيقية وأضفها لمحفظتك الاحترافية</p>
-                </div>
-            </div>
-        </div>
-    </section>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link active" data-i18n="navHome">الرئيسية</a>
+        <a href="pages/levels.html" class="nav-link" data-i18n="navCourses">المناهج والمسارات</a>
+        <a href="pages/lesson-detail.html" class="nav-link" data-i18n="navSliders">شروحات تفاعلية</a>
+        <a href="../Pixel-Community/index.html" class="nav-link" data-i18n="navCommunity">المجتمع</a>
+        <a href="pages/quiz.html" class="nav-link" data-i18n="navQuiz">الاختبار التفاعلي</a>
+        <a href="pages/dashboard.html" class="nav-link" data-i18n="navDashboard">لوحة التحكم</a>
+      </nav>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <h2>مميزات المنصة</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>اختبار تحديد المستوى</h3>
-                    <p>اكتشف مستواك الحالي وحدد المسار التعليمي المناسب لك</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>محتوى منظم</h3>
-                    <p>دروس مرتبة بعناية تغطي جميع جوانب تصميم الواجهات</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">✅</div>
-                    <h3>اختبارات تفاعلية</h3>
-                    <p>قيّم معلوماتك بعد كل درس من خلال اختبارات شاملة</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>مسارات متعددة</h3>
-                    <p>اختر من بين مستويات تعليمية متعددة حسب احتياجاتك</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3>تعلم عملي</h3>
-                    <p>محتوى يجمع بين النظري والعملي مع أهداف واضحة</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎓</div>
-                    <h3>معايير عالمية</h3>
-                    <p>تتبع أعلى معايير التصميم التعليمي الرقمي</p>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="controls-group">
+        <button class="btn btn-outline btn-sm lang-toggle-btn" onclick="window.i18n.toggleLang()">English</button>
+        <button class="btn btn-outline btn-sm" onclick="window.i18n.toggleTheme()"><i class="fa-solid fa-moon"></i></button>
+        <a href="pages/login.html" class="btn btn-primary btn-sm" id="auth-nav-btn" data-i18n="navLogin">تسجيل الدخول</a>
+      </div>
+    </div>
+  </header>
 
-    <!-- Levels Section -->
-    <section class="levels" id="levels">
-        <div class="container">
-            <h2>اختر مسارك التعليمي</h2>
-            <p class="levels-subtitle">ابدأ من المستوى الذي يناسب خبرتك وتقدم في رحلتك التعليمية</p>
-            <div class="levels-grid">
-                <div class="level-card">
-                    <div class="level-icon">🌱</div>
-                    <h3>مستوى المبتدئين</h3>
-                    <p>ابدأ من الأساسيات وتعلم المفاهيم الأولية لتصميم الواجهات</p>
-                    <a href="pages/levels.html?level=beginner" class="btn btn-primary">ابدأ التعلم</a>
-                </div>
-                <div class="level-card">
-                    <div class="level-icon">📈</div>
-                    <h3>مستوى المتوسط</h3>
-                    <p>طور مهاراتك وتعمق في تقنيات التصميم المتقدمة</p>
-                    <a href="pages/levels.html?level=intermediate" class="btn btn-primary">ابدأ التعلم</a>
-                </div>
-                <div class="level-card">
-                    <div class="level-icon">⭐</div>
-                    <h3>مستوى متقدم</h3>
-                    <p>أتقن مهارات التصميم والاستراتيجيات المتطورة</p>
-                    <a href="pages/levels.html?level=advanced" class="btn btn-primary">ابدأ التعلم</a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Hero Section -->
+  <section class="container" style="padding: 4rem 1.5rem; text-align: center;">
+    <div class="badge badge-purple" style="margin-bottom: 1.25rem; font-size: 0.85rem;">
+      <i class="fa-solid fa-sparkles"></i> <span data-i18n="activeCamp">المعسكر الحالي: Pixel Camp - الدفعة الأولى</span>
+    </div>
+    
+    <h1 style="font-size: 2.8rem; font-weight: 800; margin-bottom: 1.25rem; line-height: 1.25;" data-i18n="heroTitle">
+      منصة PIXEL التعليمية والمجتمعية لـ UI/UX
+    </h1>
+    
+    <p style="max-width: 700px; margin: 0 auto 2.5rem; color: var(--text-muted); font-size: 1.1rem;" data-i18n="heroSubtitle">
+      رحلة تفاعلية متكاملة لتعلم تصميم الواجهات الرقمية وتجربة المستخدم من الصفر إلى الاحتراف مع مجتمع مبدع وخبراء متخصصين.
+    </p>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p><strong>Pixel Platform</strong> - منصة تعليمية متخصصة في تصميم UI/UX</p>
-            <p>© 2026 جميع الحقوق محفوظة</p>
+    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+      <a href="pages/lesson-detail.html" class="btn btn-primary" style="padding: 0.85rem 2rem;" data-i18n="startLearning">
+        ابدأ التعلم الآن <i class="fa-solid fa-arrow-left"></i>
+      </a>
+      <a href="pages/signup.html" class="btn btn-outline" style="padding: 0.85rem 2rem;" data-i18n="joinCamp">
+        الانضمام إلى Pixel Camp
+      </a>
+    </div>
+  </section>
+
+  <!-- Features & Modules Overview Grid -->
+  <section class="container" style="padding: 2rem 1.5rem 6rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.75rem;">
+      
+      <!-- Feature 1 -->
+      <div class="glass-card">
+        <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(139, 92, 246, 0.2); color: var(--primary-glow); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1.25rem;">
+          <i class="fa-solid fa-sliders"></i>
         </div>
-    </footer>
-    <script src="js/auth.js"></script>
+        <h3 style="margin-bottom: 0.5rem;" data-i18n="navSliders">شروحات تفاعلية (Sliders)</h3>
+        <p style="color: var(--text-muted); font-size: 0.925rem;">شروحات بصرية مقارنة بالألوان للكيبورد والأسهم تشرح الأخطاء الشائعة والممارسات الصحيحة بوضوح.</p>
+        <a href="pages/lesson-detail.html" style="display: inline-block; margin-top: 1rem; color: var(--primary-glow); text-decoration: none; font-weight: 600; font-size: 0.875rem;">استكشف الشروحات &rarr;</a>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="glass-card">
+        <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(234, 179, 8, 0.2); color: #eab308; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1.25rem;">
+          <i class="fa-solid fa-award"></i>
+        </div>
+        <h3 style="margin-bottom: 0.5rem;" data-i18n="navQuiz">اختبارات جادة وأوسمة إنجاز</h3>
+        <p style="color: var(--text-muted); font-size: 0.925rem;">اختبارات حقيقية تشترط دقة 80% للتأهل والانتقال للمستوى التالي وتوثيق إنجازاتك في البروفايل.</p>
+        <a href="pages/quiz.html" style="display: inline-block; margin-top: 1rem; color: #eab308; text-decoration: none; font-weight: 600; font-size: 0.875rem;">بدء الاختبار الآن &rarr;</a>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="glass-card">
+        <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(236, 72, 153, 0.2); color: #ec4899; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1.25rem;">
+          <i class="fa-solid fa-user-shield"></i>
+        </div>
+        <h3 style="margin-bottom: 0.5rem;" data-i18n="navDashboard">نظام الصلاحيات والرتب (RBAC)</h3>
+        <p style="color: var(--text-muted); font-size: 0.925rem;">نظام رتب متقدم يوزع الصلاحيات بين الـ Founder والـ Admins والمحاضرين وفريق الميديا والطلاب.</p>
+        <a href="pages/dashboard.html" style="display: inline-block; margin-top: 1rem; color: #ec4899; text-decoration: none; font-weight: 600; font-size: 0.875rem;">دخول لوحة التحكم &rarr;</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="border-top: 1px solid var(--border-color); padding: 2rem 0; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+    <div class="container">
+      <p data-i18n="footerText">جميع الحقوق محفوظة منصة Pixel التعليمية 2026.</p>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/auth.js"></script>
 </body>
 </html>
